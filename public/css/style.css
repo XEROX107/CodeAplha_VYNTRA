@@ -1,0 +1,3761 @@
+/* =========================================================
+   VYNTRA — COMPLETE STYLESHEET
+   Theme: Dark / Purple
+   File: public/css/style.css
+   ========================================================= */
+
+/* -------------------- 1. GLOBAL VARIABLES -------------------- */
+
+:root {
+    --bg: #0b0b12;
+    --surface: #14141f;
+    --surface-soft: #0f0f19;
+    --surface-hover: #1c1b2b;
+    --border: #29283a;
+
+    --text: #f5f4ff;
+    --muted: #9b9aaf;
+
+    --accent: #9b7bff;
+    --accent-hover: #b19aff;
+    --accent-soft: rgba(155, 123, 255, 0.12);
+
+    --success: #62dfab;
+    --danger: #ff9eae;
+    --warning: #ffd479;
+
+    --radius: 18px;
+    --radius-small: 12px;
+
+    --shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+    --transition: 0.2s ease;
+}
+
+/* -------------------- 2. RESET & BASE -------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+    background: var(--bg);
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 10% 0%,
+            rgba(106, 76, 190, 0.09),
+            transparent 32%),
+        var(--bg);
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text);
+    line-height: 1.3;
+}
+
+p {
+    overflow-wrap: anywhere;
+}
+
+::selection {
+    color: #fff;
+    background: rgba(155, 123, 255, 0.45);
+}
+
+/* -------------------- 3. TOP NAVIGATION -------------------- */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    min-height: 72px;
+    padding: 12px 28px;
+    background: rgba(11, 11, 18, 0.96);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.brand {
+    flex-shrink: 0;
+    color: var(--text);
+    font-size: 25px;
+    font-weight: 850;
+    letter-spacing: -1.2px;
+    line-height: 1;
+}
+
+.brand span {
+    color: var(--accent);
+}
+
+.brand:hover {
+    color: var(--text);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 9px 13px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--text);
+    background: var(--accent-soft);
+    border-color: rgba(155, 123, 255, 0.15);
+}
+
+.nav-search-form {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 420px;
+    min-width: 0;
+    margin: 0 auto;
+}
+
+.nav-search-form input {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    padding: 0 15px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    background: var(--surface-soft);
+    color: var(--text);
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.nav-search-form input::placeholder {
+    color: var(--muted);
+}
+
+.nav-search-form input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(155, 123, 255, 0.12);
+}
+
+.search-btn {
+    flex-shrink: 0;
+    min-height: 42px;
+    padding: 0 17px;
+    border: 0;
+    border-radius: 11px;
+    background: var(--accent);
+    color: #100c1d;
+    font-weight: 750;
+    transition:
+        background var(--transition),
+        transform var(--transition);
+}
+
+.search-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.nav-user {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.nav-user>a:not(.btn-primary) {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.nav-user>a:not(.btn-primary):hover {
+    color: var(--accent);
+}
+
+.nav-user form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.nav-avatar {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    border: 1px solid rgba(155, 123, 255, 0.25);
+    border-radius: 50%;
+    background: #29213f;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.nav-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.notification-link {
+    position: relative;
+}
+
+.notification-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: #ff5478;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.logout-btn {
+    min-height: 38px;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    font-weight: 600;
+    transition: all var(--transition);
+}
+
+.logout-btn:hover {
+    border-color: rgba(255, 158, 174, 0.25);
+    background: rgba(255, 80, 110, 0.08);
+    color: var(--danger);
+}
+
+/* -------------------- 4. BUTTONS -------------------- */
+
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-danger,
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 9px 16px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    transition: all var(--transition);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #100c1d;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    color: #100c1d;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    border-color: var(--border);
+    background: var(--surface-hover);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-danger {
+    border-color: rgba(255, 158, 174, 0.2);
+    background: rgba(255, 80, 110, 0.1);
+    color: var(--danger);
+}
+
+.btn-danger:hover {
+    background: rgba(255, 80, 110, 0.18);
+}
+
+.btn-outline {
+    border-color: var(--border);
+    background: transparent;
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+button[type="submit"]:focus-visible,
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* -------------------- 5. MAIN PAGE CONTAINER -------------------- */
+
+.page-container {
+    width: 100%;
+    max-width: 1240px;
+    min-height: calc(100vh - 72px);
+    margin: 0 auto;
+    padding: 30px 24px 60px;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.page-header h1,
+.page-header h2 {
+    margin-bottom: 4px;
+}
+
+.page-title {
+    margin-bottom: 6px;
+    font-size: clamp(25px, 4vw, 34px);
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.page-subtitle {
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+.section-title {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 750;
+}
+
+/* -------------------- 6. CARDS & PANELS -------------------- */
+
+.panel,
+.card,
+.auth-card,
+.post-card,
+.profile-card,
+.search-user-card,
+.notification-card,
+.welcome-card,
+.right-panel {
+    min-width: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.panel,
+.card {
+    padding: 22px;
+}
+
+.panel-header,
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.panel-header h2,
+.panel-header h3,
+.card-header h2,
+.card-header h3 {
+    margin-bottom: 0;
+}
+
+/* -------------------- 7. AUTHENTICATION PAGES -------------------- */
+
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 150px);
+    padding: 30px 0;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 34px;
+}
+
+.auth-card h1,
+.auth-card h2 {
+    margin-bottom: 8px;
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+.auth-card>p {
+    margin-bottom: 25px;
+    color: var(--muted);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.auth-form .form-group {
+    margin-bottom: 0;
+}
+
+.auth-footer {
+    margin: 22px 0 0;
+    color: var(--muted);
+    text-align: center;
+}
+
+.auth-footer a {
+    font-weight: 700;
+}
+
+/* -------------------- 8. FORMS & INPUTS -------------------- */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.form-group label,
+.form-label {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+input,
+textarea,
+select {
+    max-width: 100%;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+textarea,
+select {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    outline: none;
+    background: var(--surface-soft);
+    color: var(--text);
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+select {
+    min-height: 44px;
+    padding: 10px 13px;
+}
+
+textarea {
+    min-height: 110px;
+    padding: 12px 14px;
+    resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #77758e;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(155, 123, 255, 0.11);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--accent);
+}
+
+input[type="file"] {
+    max-width: 100%;
+    color: var(--muted);
+}
+
+small,
+.form-hint,
+.muted {
+    color: var(--muted);
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+/* -------------------- 9. ALERTS & VALIDATION -------------------- */
+
+.error-box,
+.success-box,
+.warning-box {
+    margin-bottom: 22px;
+    padding: 13px 16px;
+    border: 1px solid;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.error-box {
+    border-color: rgba(255, 158, 174, 0.25);
+    background: rgba(255, 80, 110, 0.08);
+    color: var(--danger);
+}
+
+.error-box p {
+    margin: 3px 0;
+}
+
+.success-box {
+    border-color: rgba(98, 223, 171, 0.22);
+    background: rgba(98, 223, 171, 0.08);
+    color: var(--success);
+}
+
+.warning-box {
+    border-color: rgba(255, 212, 121, 0.25);
+    background: rgba(255, 212, 121, 0.08);
+    color: var(--warning);
+}
+
+/* -------------------- 10. DASHBOARD & FEED LAYOUT -------------------- */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+    gap: 25px;
+}
+
+.feed-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.right-panel {
+    position: sticky;
+    top: 95px;
+    padding: 20px;
+}
+
+.app-layout {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr) 290px;
+    gap: 24px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 26px 24px;
+}
+
+.sidebar {
+    min-width: 0;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.welcome-section,
+.welcome-card {
+    margin-bottom: 22px;
+    padding: 24px;
+}
+
+.welcome-section h1,
+.welcome-card h1 {
+    margin-bottom: 8px;
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.7px;
+}
+
+.welcome-section p,
+.welcome-card p {
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+/* -------------------- 11. CREATE POST -------------------- */
+
+.create-post,
+.post-create-card,
+.create-post-card {
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.create-post h2,
+.create-post-card h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.create-post form,
+.post-create-card form,
+.create-post-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.create-post textarea,
+.post-create-card textarea,
+.create-post-card textarea {
+    min-height: 95px;
+}
+
+.post-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.post-form-actions input[type="file"] {
+    max-width: 100%;
+}
+
+/* -------------------- 12. POST CARDS -------------------- */
+
+.post-card {
+    padding: 21px;
+    overflow: hidden;
+    transition: border-color var(--transition);
+}
+
+.post-card:hover {
+    border-color: #3a3553;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.post-author,
+.user-info,
+.search-user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.post-author-info,
+.user-details {
+    min-width: 0;
+}
+
+.post-author-name,
+.user-name {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--text);
+    font-weight: 750;
+}
+
+.post-author-name:hover,
+.user-name:hover {
+    color: var(--accent);
+}
+
+.post-time,
+.post-date,
+.timestamp {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.post-content {
+    margin-bottom: 16px;
+    color: #e6e4f2;
+    font-size: 15px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.post-image,
+.post-media img {
+    width: 100%;
+    max-height: 600px;
+    margin: 14px 0;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--surface-soft);
+    object-fit: contain;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.post-actions form,
+.comment-actions form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.post-action,
+.like-btn,
+.comment-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 36px;
+    padding: 7px 12px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 650;
+    transition: all var(--transition);
+}
+
+.post-action:hover,
+.like-btn:hover,
+.comment-btn:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.like-btn.liked,
+.like-btn.active {
+    color: #ff759b;
+}
+
+.post-stats {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.post-menu,
+.post-options {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.post-menu button,
+.post-options button {
+    padding: 6px 9px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+}
+
+.post-menu button:hover,
+.post-options button:hover {
+    color: var(--text);
+}
+
+/* -------------------- 13. COMMENTS -------------------- */
+
+.comments-section,
+.comments-container {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.comments-heading {
+    margin-bottom: 14px;
+    font-size: 15px;
+    font-weight: 750;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-bottom: 16px;
+}
+
+.comment-item,
+.comment {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+}
+
+.comment-body {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 13px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-soft);
+}
+
+.comment-author {
+    display: inline-block;
+    margin-bottom: 4px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.comment-content {
+    margin-bottom: 0;
+    color: #dedceb;
+    font-size: 14px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.comment-actions button,
+.comment-actions a {
+    padding: 3px 6px;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.comment-actions button:hover,
+.comment-actions a:hover {
+    color: var(--accent);
+}
+
+.comment-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.comment-form textarea,
+.comment-form input {
+    flex: 1;
+    min-width: 0;
+}
+
+.comment-form textarea {
+    min-height: 44px;
+    max-height: 160px;
+}
+
+.comment-form button {
+    flex-shrink: 0;
+}
+
+/* -------------------- 14. AVATARS -------------------- */
+
+.avatar {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    border: 1px solid rgba(155, 123, 255, 0.2);
+    border-radius: 50%;
+    background: #29213f;
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.avatar img,
+.avatar-image,
+.profile-photo-small {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.avatar-sm {
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+}
+
+.avatar-lg {
+    width: 76px;
+    height: 76px;
+    font-size: 25px;
+}
+
+/* -------------------- 15. PROFILE PAGE -------------------- */
+
+.profile-page {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.profile-header,
+.profile-card {
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.profile-cover {
+    min-height: 135px;
+    background:
+        radial-gradient(circle at 80% 10%,
+            rgba(177, 154, 255, 0.35),
+            transparent 35%),
+        linear-gradient(120deg, #21183a, #30234c 55%, #171426);
+}
+
+.profile-info,
+.profile-details {
+    padding: 25px;
+}
+
+.profile-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: -56px;
+}
+
+.profile-photo,
+.profile-avatar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 112px;
+    overflow: hidden;
+    border: 5px solid var(--surface);
+    border-radius: 50%;
+    background: #29213f;
+    color: var(--accent);
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.profile-photo img,
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-main-info {
+    flex: 1;
+    min-width: 0;
+    padding-top: 12px;
+}
+
+.profile-name {
+    margin-bottom: 4px;
+    font-size: clamp(23px, 4vw, 30px);
+    font-weight: 850;
+    overflow-wrap: anywhere;
+}
+
+.profile-email {
+    color: var(--muted);
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.profile-bio {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    color: #dedceb;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.profile-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 20px 0;
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.profile-stat strong {
+    color: var(--text);
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.profile-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.profile-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* -------------------- 16. PROFILE EDIT FORM -------------------- */
+
+.profile-edit-card {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.profile-edit-card h1 {
+    margin-bottom: 22px;
+}
+
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.profile-preview {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface-soft);
+}
+
+.profile-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* -------------------- 17. FOLLOWERS / FOLLOWING / DISCOVER -------------------- */
+
+.user-list,
+.people-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user-list-item,
+.people-item,
+.discover-user,
+.search-user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--surface);
+    transition:
+        border-color var(--transition),
+        background var(--transition);
+}
+
+.user-list-item:hover,
+.people-item:hover,
+.discover-user:hover,
+.search-user-card:hover {
+    border-color: #484064;
+    background: var(--surface-hover);
+}
+
+.user-list-item .user-info,
+.people-item .user-info,
+.discover-user .user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-bio {
+    display: -webkit-box;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 13px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.follow-btn,
+.unfollow-btn {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 14px;
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    background: var(--accent);
+    color: #100c1d;
+    font-size: 13px;
+    font-weight: 750;
+    transition: all var(--transition);
+}
+
+.follow-btn:hover {
+    background: var(--accent-hover);
+    color: #100c1d;
+}
+
+.unfollow-btn {
+    border-color: var(--border);
+    background: transparent;
+    color: var(--text);
+}
+
+.unfollow-btn:hover {
+    border-color: rgba(255, 158, 174, 0.4);
+    background: rgba(255, 80, 110, 0.08);
+    color: var(--danger);
+}
+
+/* -------------------- 18. SEARCH PAGE -------------------- */
+
+.search-results-page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.search-page-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.search-page-form input {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.search-user-card {
+    padding: 17px;
+}
+
+.search-user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-user-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-user-details h3 {
+    margin-bottom: 3px;
+    font-size: 15px;
+}
+
+.search-user-details p {
+    margin-bottom: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.search-empty {
+    padding: 35px 20px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    color: var(--muted);
+    text-align: center;
+}
+
+/* -------------------- 19. NOTIFICATIONS -------------------- */
+
+.notifications-page {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.notifications-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.notifications-header h1 {
+    margin-bottom: 0;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.notification-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px;
+    transition: border-color var(--transition);
+}
+
+.notification-card:hover {
+    border-color: #484064;
+}
+
+.notification-card.unread,
+.notification-card.is-unread {
+    border-color: rgba(155, 123, 255, 0.4);
+    background:
+        linear-gradient(100deg,
+            rgba(155, 123, 255, 0.08),
+            transparent 75%),
+        var(--surface);
+}
+
+.notification-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-content p {
+    margin-bottom: 5px;
+    color: #e8e6f4;
+    overflow-wrap: anywhere;
+}
+
+.notification-content a {
+    font-weight: 750;
+}
+
+.notification-time {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.notification-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.notification-actions form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.notification-actions button {
+    padding: 5px 9px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.notification-actions button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* -------------------- 20. PAGINATION -------------------- */
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.pagination-container nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+.pagination-container a,
+.pagination-container span,
+.pagination-container button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    min-height: 38px;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.pagination-container a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* -------------------- 21. EMPTY STATES -------------------- */
+
+.empty-state,
+.empty-message {
+    padding: 38px 22px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    background: rgba(20, 20, 31, 0.45);
+    color: var(--muted);
+    text-align: center;
+}
+
+.empty-state h2,
+.empty-state h3 {
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.empty-state p,
+.empty-message p {
+    margin-bottom: 16px;
+}
+
+/* -------------------- 22. UTILITIES -------------------- */
+
+.text-muted {
+    color: var(--muted) !important;
+}
+
+.text-accent {
+    color: var(--accent) !important;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+hr {
+    height: 1px;
+    margin: 20px 0;
+    border: 0;
+    background: var(--border);
+}
+
+/* -------------------- 23. SCROLLBAR -------------------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #38334c;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #51476f;
+}
+
+/* -------------------- 24. TABLET RESPONSIVENESS -------------------- */
+
+@media (max-width: 1050px) {
+    .topbar {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .nav-inner {
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 3px;
+    }
+
+    .nav-link {
+        padding-right: 9px;
+        padding-left: 9px;
+    }
+
+    .app-layout {
+        grid-template-columns: 190px minmax(0, 1fr);
+    }
+
+    .app-layout .right-panel {
+        position: static;
+        grid-column: 2;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr) 250px;
+        gap: 18px;
+    }
+
+    .page-container {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
+
+/* -------------------- 25. MOBILE NAVIGATION -------------------- */
+
+@media (max-width: 760px) {
+    .topbar {
+        position: relative;
+        padding: 14px 16px;
+    }
+
+    .nav-inner {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 13px;
+    }
+
+    .brand {
+        font-size: 23px;
+    }
+
+    .nav-search-form {
+        order: 3;
+        flex: 1 0 100%;
+        max-width: none;
+        margin: 0;
+    }
+
+    .nav-user {
+        gap: 8px;
+    }
+
+    .nav-links {
+        order: 4;
+        flex: 1 0 100%;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px;
+    }
+
+    .nav-link {
+        min-height: 36px;
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .right-panel {
+        position: static;
+    }
+
+    .app-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        padding: 18px 15px;
+    }
+
+    .app-layout .right-panel {
+        grid-column: auto;
+    }
+
+    .sidebar {
+        padding: 15px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+    }
+
+    .navigation {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .page-container {
+        padding: 22px 15px 40px;
+    }
+
+    .profile-info,
+    .profile-details {
+        padding: 19px;
+    }
+
+    .profile-stats {
+        gap: 18px;
+    }
+}
+
+/* -------------------- 26. SMALL MOBILE -------------------- */
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .page-container {
+        padding: 18px 12px 32px;
+    }
+
+    .topbar {
+        padding: 13px 12px;
+    }
+
+    .brand {
+        font-size: 22px;
+    }
+
+    .nav-user {
+        gap: 6px;
+    }
+
+    .nav-user>a,
+    .logout-btn {
+        font-size: 12px;
+    }
+
+    .logout-btn {
+        min-height: 34px;
+        padding: 6px 9px;
+    }
+
+    .nav-avatar {
+        width: 31px;
+        height: 31px;
+    }
+
+    .nav-search-form input {
+        height: 40px;
+    }
+
+    .search-btn {
+        min-height: 40px;
+        padding: 0 12px;
+    }
+
+    .nav-links {
+        gap: 4px;
+    }
+
+    .nav-link {
+        min-height: 34px;
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .auth-card {
+        padding: 23px 18px;
+        border-radius: 15px;
+    }
+
+    .auth-card h1,
+    .auth-card h2 {
+        font-size: 25px;
+    }
+
+    .panel,
+    .card {
+        padding: 16px;
+    }
+
+    .post-card {
+        padding: 15px;
+        border-radius: 15px;
+    }
+
+    .create-post,
+    .post-create-card,
+    .create-post-card {
+        padding: 15px;
+    }
+
+    .post-header {
+        gap: 8px;
+    }
+
+    .avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+    .avatar-sm {
+        width: 30px;
+        height: 30px;
+    }
+
+    .post-content {
+        font-size: 14px;
+    }
+
+    .post-actions {
+        gap: 5px;
+    }
+
+    .post-action,
+    .like-btn,
+    .comment-btn {
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+
+    .comment-form {
+        flex-wrap: wrap;
+    }
+
+    .comment-form textarea,
+    .comment-form input {
+        flex-basis: 100%;
+    }
+
+    .comment-form button {
+        margin-left: auto;
+    }
+
+    .profile-cover {
+        min-height: 95px;
+    }
+
+    .profile-info,
+    .profile-details {
+        padding: 15px;
+    }
+
+    .profile-top {
+        gap: 12px;
+        margin-top: -42px;
+    }
+
+    .profile-photo,
+    .profile-avatar {
+        width: 82px;
+        height: 82px;
+        border-width: 4px;
+        font-size: 25px;
+    }
+
+    .profile-main-info {
+        padding-top: 9px;
+    }
+
+    .profile-name {
+        font-size: 22px;
+    }
+
+    .profile-stats {
+        gap: 14px;
+    }
+
+    .profile-stat strong {
+        font-size: 17px;
+    }
+
+    .profile-edit-card {
+        padding: 19px 15px;
+    }
+
+    .user-list-item,
+    .people-item,
+    .discover-user,
+    .search-user-card {
+        gap: 9px;
+        padding: 12px;
+    }
+
+    .follow-btn,
+    .unfollow-btn {
+        min-height: 33px;
+        padding: 6px 9px;
+        font-size: 12px;
+    }
+
+    .search-page-form {
+        gap: 7px;
+        padding: 11px;
+    }
+
+    .search-page-form .btn-primary {
+        padding-right: 11px;
+        padding-left: 11px;
+    }
+
+    .notification-card {
+        gap: 10px;
+        padding: 14px;
+    }
+
+    .notifications-header {
+        align-items: flex-start;
+    }
+
+    .page-title {
+        font-size: 25px;
+    }
+
+    .form-actions {
+        align-items: stretch;
+    }
+
+    .form-actions .btn,
+    .form-actions .btn-primary,
+    .form-actions .btn-secondary {
+        flex: 1;
+    }
+}
+
+/* -------------------- 27. REDUCED MOTION -------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =====================================================
+   VYNTRA FIX: RESTORE FEED SIDEBAR AND IMAGE SIZES
+   Add this block at the VERY BOTTOM of style.css
+   ===================================================== */
+
+/* Keep the main feed and sidebar visible */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    align-items: start;
+    gap: 24px;
+}
+
+.feed-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.right-panel,
+.sidebar {
+    display: block;
+    min-width: 0;
+}
+
+.right-panel {
+    position: sticky;
+    top: 90px;
+}
+
+/* Support common feed/sidebar class names */
+.feed-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    align-items: start;
+    gap: 24px;
+}
+
+.feed-sidebar {
+    display: block;
+    min-width: 0;
+}
+
+/* Prevent images from becoming enormous */
+.post-card img,
+.post-image,
+.post-media img,
+.post-content img,
+.feed-area img {
+    max-width: 100%;
+}
+
+.post-card .post-image,
+.post-card .post-media img,
+.post-card img.post-image,
+.post-media img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 500px;
+    margin: 14px auto;
+    object-fit: contain;
+    border-radius: 13px;
+}
+
+/* Keep profile pictures small */
+.avatar,
+.nav-avatar {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.nav-avatar {
+    width: 36px;
+    height: 36px;
+}
+
+.avatar img,
+.nav-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Profile photos must stay within their containers */
+.profile-photo img,
+.profile-avatar img,
+.profile-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Tablet and mobile layout */
+@media (max-width: 760px) {
+
+    .dashboard-grid,
+    .feed-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .right-panel {
+        position: static;
+    }
+
+    .sidebar,
+    .feed-sidebar,
+    .right-panel {
+        min-width: 0;
+    }
+
+    .post-card .post-image,
+    .post-card .post-media img,
+    .post-media img {
+        max-height: 380px;
+    }
+}
+
+/* =====================================================
+   VYNTRA — FEED ALIGNMENT FIX
+   ===================================================== */
+
+/* Keep feed columns aligned */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 290px;
+    align-items: start;
+    gap: 24px;
+}
+
+.feed-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+/* Keep each post within the feed */
+.post-card {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+.post-author,
+.post-author-info,
+.user-info,
+.user-details {
+    min-width: 0;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-author-info {
+    flex: 1;
+    overflow-wrap: anywhere;
+}
+
+.post-author-name {
+    display: block;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.post-time {
+    display: block;
+    margin-top: 3px;
+    line-height: 1.4;
+}
+
+/* Keep post text and images inside the card */
+.post-content {
+    width: 100%;
+    margin: 12px 0;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.post-card .post-image,
+.post-card .post-media img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 450px;
+    margin: 14px auto;
+    object-fit: contain;
+}
+
+/* Keep comments below post actions */
+.comments-section,
+.comments-container {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin-top: 16px;
+    clear: both;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+.comment-item,
+.comment {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+}
+
+.comment-body {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.comment-author {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.comment-content {
+    margin: 0;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+/* Keep comment input and button in one row */
+.comment-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    margin-top: 14px;
+}
+
+.comment-form input,
+.comment-form textarea {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+.comment-form textarea {
+    min-height: 44px;
+    max-height: 130px;
+}
+
+.comment-form button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+/* Prevent buttons and forms from breaking the layout */
+.post-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+}
+
+.post-actions form,
+.comment-actions form {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+}
+
+/* Mobile feed */
+@media (max-width: 760px) {
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .post-card {
+        padding: 15px;
+    }
+
+    .comment-form {
+        align-items: stretch;
+    }
+
+    .comment-form textarea {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .post-card .post-image,
+    .post-card .post-media img {
+        max-height: 350px;
+    }
+}
+
+@media (max-width: 420px) {
+    .comment-form {
+        flex-wrap: wrap;
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+        flex-basis: 100%;
+    }
+
+    .comment-form button {
+        margin-left: auto;
+    }
+}
+
+/* =========================================================
+   VYNTRA PREMIUM FEED — TARGETED LAYOUT FIX
+   Matches dashboard.blade.php
+   ========================================================= */
+
+.feed-layout {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr) 285px;
+    align-items: start;
+    gap: 22px;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.feed-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.feed-left-sidebar,
+.feed-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+}
+
+.feed-left-sidebar {
+    position: sticky;
+    top: 92px;
+}
+
+.feed-sidebar {
+    position: sticky;
+    top: 92px;
+}
+
+.sidebar-panel {
+    width: 100%;
+    min-width: 0;
+    padding: 19px;
+}
+
+.left-nav-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.left-nav-brand {
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 850;
+    letter-spacing: -1px;
+}
+
+.left-nav-brand span {
+    color: var(--accent);
+}
+
+.left-nav-panel .eyebrow {
+    margin: 0;
+}
+
+.feed-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.feed-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 650;
+    transition: all 0.2s ease;
+}
+
+.feed-nav-link:hover,
+.feed-nav-link.active {
+    border-color: rgba(155, 123, 255, 0.17);
+    background: var(--accent-soft);
+    color: var(--text);
+}
+
+.feed-nav-icon {
+    display: inline-flex;
+    flex: 0 0 22px;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 20px;
+}
+
+.left-sidebar-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.left-sidebar-note p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.sidebar-note-dot {
+    flex: 0 0 8px;
+    width: 8px;
+    height: 8px;
+    margin-top: 6px;
+    border-radius: 50%;
+    background: var(--success);
+}
+
+/* Welcome heading */
+.welcome-section {
+    margin-bottom: 24px;
+}
+
+.welcome-section .eyebrow,
+.feed-heading .eyebrow {
+    margin-bottom: 6px;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+}
+
+.welcome-section h1 {
+    margin-bottom: 8px;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.welcome-section h1 span {
+    color: var(--accent);
+}
+
+.welcome-section>p:last-child {
+    margin-bottom: 0;
+}
+
+/* Post composer */
+.composer {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
+    padding: 21px;
+}
+
+.composer-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.composer-content h2 {
+    margin-bottom: 12px;
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.post-avatar,
+.comment-avatar {
+    display: flex;
+    flex: 0 0 42px;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    border: 1px solid rgba(155, 123, 255, 0.25);
+    border-radius: 50%;
+    background: #29213f;
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.post-avatar img,
+.comment-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.composer-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+.composer textarea {
+    display: block;
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+}
+
+.composer-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.composer-actions input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+.upload-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.upload-label:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.upload-label span {
+    color: var(--accent);
+    font-size: 18px;
+}
+
+.small-text {
+    font-size: 12px;
+}
+
+.composer .small-text {
+    margin: 0;
+}
+
+/* Feed heading */
+.feed-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 5px 0 0;
+}
+
+.feed-heading h2 {
+    margin: 0;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.feed-total {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Individual posts */
+.post-card {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 20px;
+    overflow: hidden;
+    border-radius: var(--radius);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 16px;
+}
+
+.post-header>.post-avatar {
+    flex-shrink: 0;
+}
+
+.post-author {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    min-width: 0;
+}
+
+.post-author strong {
+    display: block;
+    max-width: 100%;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.profile-name-link {
+    color: var(--text);
+    font-weight: 750;
+    text-decoration: none;
+}
+
+.profile-name-link:hover {
+    color: var(--accent);
+}
+
+.post-author>span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.post-header>form {
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.delete-btn {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    border-color: rgba(255, 158, 174, 0.3);
+    color: var(--danger);
+}
+
+.post-content {
+    margin: 0 0 16px;
+    color: #e6e4f2;
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+/* Strictly constrain uploaded post images */
+.post-image-wrap {
+    width: 100%;
+    max-width: 100%;
+    margin: 12px 0 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--surface-soft);
+    text-align: center;
+}
+
+.post-image-wrap img.post-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 480px;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 0;
+    object-fit: contain;
+}
+
+/* Like and comment counts */
+.post-stats {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+    padding: 12px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.post-stats form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.like-btn,
+.comment-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 34px;
+    padding: 6px 10px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.like-btn:hover,
+.comment-count:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.like-btn.liked {
+    color: #ff759b;
+}
+
+.like-count {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Comments stay below post actions */
+.comments-section {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin-top: 17px;
+    clear: both;
+}
+
+.comments-section>h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.comments-section>h3 span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 11px;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+}
+
+.comment-avatar {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+    font-size: 12px;
+}
+
+.comment-content {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.comment-body {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 13px;
+    border: 1px solid var(--border);
+    border-radius: 0 12px 12px 12px;
+    background: var(--surface-soft);
+}
+
+.comment-heading {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 5px;
+}
+
+.comment-heading strong {
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.comment-heading>span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.comment-heading .edited-label {
+    color: var(--accent);
+}
+
+.comment-body>p {
+    margin: 0;
+    color: #dedceb;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.empty-comments {
+    margin: 0;
+    padding: 15px;
+    border: 1px dashed var(--border);
+    border-radius: 11px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Edit/delete comment controls */
+.comment-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 7px 0 0 3px;
+}
+
+.comment-actions form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.comment-edit summary {
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.comment-edit summary:hover,
+.text-delete:hover {
+    color: var(--accent);
+}
+
+.edit-comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 10px;
+}
+
+.edit-comment-form textarea {
+    min-height: 80px;
+}
+
+.edit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.cancel-btn,
+.text-delete {
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.text-delete {
+    border-color: transparent;
+}
+
+/* Comment input: avatar, input, button */
+.comment-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    margin-top: 17px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.comment-form .current-avatar {
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+}
+
+.comment-form input[type="text"] {
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    height: 42px;
+    margin: 0;
+    padding: 9px 12px;
+}
+
+.comment-form button {
+    flex: 0 0 auto;
+    min-height: 40px;
+    white-space: nowrap;
+}
+
+/* Discover People cards */
+.discover-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 16px 0;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.discover-summary strong {
+    color: var(--accent);
+    font-size: 16px;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.user-card:last-child {
+    border-bottom: 0;
+}
+
+.user-card .user-avatar {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+}
+
+.user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-info strong {
+    display: block;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.user-info .profile-name-link {
+    overflow-wrap: anywhere;
+}
+
+.follower-count {
+    margin: 3px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.user-card form {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.user-card .follow-btn {
+    min-height: 32px;
+    padding: 6px 9px;
+    font-size: 11px;
+}
+
+.profile-sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.profile-sidebar-links>a {
+    width: 100%;
+}
+
+/* Empty feed and pagination */
+.empty-feed {
+    padding: 35px 22px;
+    text-align: center;
+}
+
+.empty-icon {
+    margin-bottom: 10px;
+    color: var(--accent);
+    font-size: 35px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 12px;
+    overflow-wrap: anywhere;
+}
+
+.pagination nav {
+    max-width: 100%;
+}
+
+/* Tablet: retain feed + discover panel, move left navigation above */
+@media (max-width: 1150px) {
+    .feed-layout {
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 18px;
+    }
+
+    .feed-left-sidebar {
+        position: static;
+        grid-column: 1 / -1;
+    }
+
+    .left-nav-panel {
+        gap: 12px;
+    }
+
+    .left-nav-brand {
+        display: none;
+    }
+
+    .feed-navigation {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .feed-nav-link {
+        flex: 0 0 auto;
+    }
+
+    .left-sidebar-note {
+        display: none;
+    }
+}
+
+/* Mobile: single-column feed */
+@media (max-width: 760px) {
+    .feed-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .feed-main {
+        grid-row: 1;
+    }
+
+    .feed-left-sidebar {
+        grid-row: 2;
+    }
+
+    .feed-sidebar {
+        position: static;
+        grid-row: 3;
+    }
+
+    .feed-navigation {
+        gap: 6px;
+    }
+
+    .feed-nav-link {
+        min-height: 38px;
+        padding: 8px 10px;
+    }
+
+    .composer {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .post-card {
+        padding: 15px;
+    }
+
+    .post-image-wrap img.post-image {
+        max-height: 380px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 450px) {
+    .composer {
+        gap: 9px;
+    }
+
+    .post-avatar {
+        flex-basis: 35px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .composer-actions {
+        align-items: stretch;
+    }
+
+    .composer-actions .btn-primary {
+        width: 100%;
+    }
+
+    .post-header {
+        gap: 8px;
+    }
+
+    .post-header>.post-avatar {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .post-author strong {
+        font-size: 13px;
+    }
+
+    .comment-form {
+        flex-wrap: wrap;
+    }
+
+    .comment-form input[type="text"] {
+        flex: 1 1 calc(100% - 50px);
+        width: auto;
+    }
+
+    .comment-form button {
+        margin-left: auto;
+    }
+
+    .post-image-wrap img.post-image {
+        max-height: 300px;
+    }
+
+    .user-card {
+        gap: 7px;
+    }
+
+    .user-card .follow-btn {
+        padding: 6px 7px;
+    }
+}
+
+/* Navigation profile picture */
+.profile-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+}
+
+.nav-avatar {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #29213f;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    font-weight: 700;
+}
+
+.nav-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.nav-profile-name {
+    font-weight: 600;
+}
+
+@media (max-width: 500px) {
+    .nav-profile-name {
+        display: none;
+    }
+}
+
+/* Vyntra: Compact comment section */
+.comments-section {
+    padding: 14px 18px;
+}
+
+.comments-section h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-avatar {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.comment-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.comment-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.comment-body {
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: var(--surface-soft);
+}
+
+.comment-heading {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.comment-heading strong {
+    font-size: 13px;
+}
+
+.comment-heading span {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.comment-body p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 5px 0 0 10px;
+    font-size: 12px;
+}
+
+.comment-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.comment-form input {
+    flex: 1;
+    min-width: 0;
+    height: 40px;
+    padding: 0 12px;
+}
+
+.comment-form .btn-primary {
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+.empty-comments {
+    margin: 8px 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+@media (max-width: 500px) {
+    .comments-section {
+        padding: 12px;
+    }
+
+    .comment-body {
+        padding: 9px 10px;
+    }
+
+    .comment-form {
+        gap: 7px;
+    }
+}
+
+/* VYNTRA — Compact Comment Layout */
+.comments-section {
+    padding: 12px 16px !important;
+}
+
+.comments-section h3 {
+    margin: 0 0 10px !important;
+    font-size: 15px;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.comment-avatar {
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    margin: 0;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.comment-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.comment-content {
+    flex: 1;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.comment-body {
+    display: inline-block;
+    max-width: 100%;
+    width: auto;
+    padding: 8px 11px !important;
+    margin: 0 !important;
+    border-radius: 12px;
+    background: var(--surface-soft);
+}
+
+.comment-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 3px !important;
+    padding: 0 !important;
+}
+
+.comment-heading strong {
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.comment-heading span {
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--muted);
+}
+
+.comment-body p {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 13px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 4px 0 0 8px !important;
+    padding: 0 !important;
+}
+
+.comment-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px !important;
+    padding: 0 !important;
+}
+
+.comment-form input {
+    flex: 1;
+    min-width: 0;
+    height: 38px;
+    padding: 0 11px;
+}
+
+.comment-form button {
+    flex-shrink: 0;
+}
+
+.empty-comments {
+    margin: 5px 0 !important;
+    font-size: 13px;
+}
+
+@media (max-width: 500px) {
+    .comments-section {
+        padding: 10px !important;
+    }
+
+    .comment-body {
+        padding: 7px 9px !important;
+    }
+}
+
+/* Vyntra — Extra Compact Comments */
+.comments-section {
+    padding: 8px 12px !important;
+}
+
+.comments-section h3 {
+    margin: 0 0 7px !important;
+    font-size: 13px !important;
+}
+
+.comments-list {
+    gap: 6px !important;
+}
+
+.comment-item {
+    gap: 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.comment-avatar {
+    flex: 0 0 26px !important;
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+}
+
+.comment-content {
+    min-width: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.comment-body {
+    display: inline-block !important;
+    width: auto !important;
+    max-width: 100%;
+    padding: 5px 8px !important;
+    margin: 0 !important;
+    border-radius: 9px !important;
+}
+
+.comment-heading {
+    gap: 6px !important;
+    margin: 0 0 2px !important;
+}
+
+.comment-heading strong {
+    font-size: 12px !important;
+}
+
+.comment-heading span {
+    font-size: 10px !important;
+}
+
+.comment-body p {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+}
+
+.comment-actions {
+    margin: 2px 0 0 5px !important;
+    gap: 8px !important;
+}
+
+.comment-form {
+    gap: 6px !important;
+    margin-top: 8px !important;
+}
+
+.comment-form .comment-avatar {
+    flex-basis: 26px !important;
+}
+
+.comment-form input {
+    height: 34px !important;
+    padding: 0 9px !important;
+    font-size: 12px !important;
+}
+
+.comment-form .btn-primary {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+}
+
+.empty-comments {
+    margin: 4px 0 !important;
+    font-size: 12px !important;
+}
+
+/* Vyntra Notification Improvements */
+.notifications-page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.notifications-header h1 {
+    margin: 0;
+    font-size: 26px;
+    color: var(--text);
+}
+
+.notifications-subtitle {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.notification-item.unread {
+    background: var(--surface-soft);
+    border-color: var(--accent);
+}
+
+.notification-item.read {
+    opacity: 0.78;
+}
+
+.notification-content.notification-link {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.notification-link:hover .notification-text p {
+    color: var(--accent-hover);
+}
+
+.notification-avatar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+}
+
+.notification-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.notification-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-text p {
+    margin: 0 0 5px;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.notification-text small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.unread-indicator {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.notification-item.read .unread-indicator {
+    visibility: hidden;
+}
+
+.mark-read-btn,
+.mark-all-read-btn {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--text);
+    font-size: 12px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.mark-read-btn:hover,
+.mark-all-read-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+.mark-read-btn:disabled,
+.mark-all-read-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.notifications-empty {
+    padding: 40px 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-align: center;
+    background: var(--surface);
+}
+
+.notifications-empty h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+}
+
+.notifications-empty p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.notifications-pagination {
+    margin-top: 20px;
+}
+
+@media (max-width: 540px) {
+    .notifications-page {
+        padding: 16px 8px;
+    }
+
+    .notifications-header {
+        align-items: flex-start;
+    }
+
+    .notifications-header h1 {
+        font-size: 22px;
+    }
+
+    .notification-item {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .notification-avatar {
+        width: 34px;
+        height: 34px;
+    }
+
+    .notification-text p {
+        font-size: 13px;
+    }
+
+    .mark-read-btn,
+    .mark-all-read-btn {
+        padding: 7px 8px;
+        font-size: 11px;
+    }
+}
